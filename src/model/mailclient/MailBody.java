@@ -48,7 +48,7 @@ public class MailBody {
 		String[] parts = mailBodyCSV.split(",");
 		
 		switch(parts.length) {
-			//case 5: this.signature = parts[4];
+			case 5: this.signature = parts[4];
 			case 4: this.encKey = parts[3];
 			case 3: this.IV2 = parts[2];
 			case 2: this.IV1 = parts[1];
@@ -64,7 +64,7 @@ public class MailBody {
 			csv = this.signature;
 		}
 		if(this.encKey != null) {
-			csv = this.encKey +   csv; // vratiti + "," kad se bude signature koristio
+			csv = this.encKey + "," + csv; 
 		}
 		if(this.IV2 != null) {
 			csv = this.IV2 +  "," + csv;
