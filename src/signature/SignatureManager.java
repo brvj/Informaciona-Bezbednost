@@ -59,7 +59,7 @@ public class SignatureManager {
 			// vrsimo proveru potpisa
 			return signature.verify(digitalSignature);
 		} catch (InvalidKeyException | NoSuchAlgorithmException | SignatureException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return false;
