@@ -128,17 +128,17 @@ public class ReadMailClient extends MailClient {
 		//dekompresovanje i dekriptovanje subject-a
 		String decryptedSubjectTxt = new String(aesCipherDec.doFinal(Base64.decode(chosenMessage.getSubject())));
 		String decompressedSubjectTxt = GzipUtil.decompress(Base64.decode(decryptedSubjectTxt));
+										
+		System.out.println("\nSubject text: \n" + new String(decompressedSubjectTxt) + "\n");
+		System.out.println("Body text: \n" + decompressedBodyText);
 		
 		//Provera potpisa
 		SignatureManager signatureManager = new SignatureManager();
-		if(signatureManager.verify(mailBody.getEncMessageBytes(),mailBody.getSignature().getBytes() , senderPublicKey)) {
-			System.out.println("Signature is verified\n");
+		if(signatureManager.verify(mailBody.getEncMessageBytes(),mailBody.getSignatureBytes() , senderPublicKey)) {
+			System.out.println("\nSignature is verified\n");
 		}else {
-			System.out.println("Signature is not verified\n");
+			System.out.println("\nSignature is not verified\n");
 		}
-				
-		System.out.println("Subject text: " + new String(decompressedSubjectTxt));
-		System.out.println("Body text: " + decompressedBodyText);
 								
 	}
 }

@@ -101,7 +101,7 @@ public class Base64 {
    *  @return decoded data array
    */
   public static byte[] decode(String data) {
-    return decode(data.toCharArray());
+    return decode(data.trim().toCharArray());
   }
 
   /** code characters for values 0..63 */

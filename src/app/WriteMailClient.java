@@ -106,7 +106,7 @@ public class WriteMailClient extends MailClient {
         
         //Provera potpisa
         boolean statusPotpisa = signatureManager.verify(ciphertext, signature, senderPublicKey);
-        System.out.println("Status potpisa -----> " + statusPotpisa);
+        System.out.println("\nStatus potpisa -----> " + statusPotpisa);
 		//System.out.println("Kriptovan tekst: " + ciphertextStr);
 		
 		//inicijalizacija za sifrovanje 
@@ -131,9 +131,9 @@ public class WriteMailClient extends MailClient {
 		MailBody mailBody = new MailBody(ciphertext, ivParameterSpec1.getIV(), ivParameterSpec2.getIV(), cypherSessionKey,signature);
 		
 		//Cuvanje IV i session kljuca // ne treba
-		JavaUtils.writeBytesToFilename(KEY_FILE, secretKey.getEncoded());
-		JavaUtils.writeBytesToFilename(IV1_FILE, ivParameterSpec1.getIV());
-		JavaUtils.writeBytesToFilename(IV2_FILE, ivParameterSpec2.getIV());
+//		JavaUtils.writeBytesToFilename(KEY_FILE, secretKey.getEncoded());
+//		JavaUtils.writeBytesToFilename(IV1_FILE, ivParameterSpec1.getIV());
+//		JavaUtils.writeBytesToFilename(IV2_FILE, ivParameterSpec2.getIV());
 		
 		//Pretvaranje mail body u string
 		String mailBodySTR = mailBody.toCSV();
